@@ -1,5 +1,6 @@
 pragma circom 2.1.4;
 
+include "../node_modules/circomlib/circuits/comparators.circom";
 
 // Input : a , length of 2 .
 // Output : c .
@@ -9,9 +10,10 @@ pragma circom 2.1.4;
 // HINT:NEGATION
 
 template NotEqual() {
+    signal input a[2];
+    signal isEqual <== IsEqual()([a[0], a[1]]);
 
-    // Your code here.
-   
+    signal output c <== 1 - isEqual;
 }
 
 component main = NotEqual();
